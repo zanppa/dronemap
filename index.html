@@ -159,7 +159,7 @@
 	var airfieldLayer = new ol.layer.Vector({
 		name: 'lentokentat',
 		source: new ol.source.Vector({
-			url: 'http://zan.kapsi.fi/dronemap/lentokentat.geojson',
+			url: 'https://raw.githubusercontent.com/zanppa/dronemap/master/lentokentat.geojson',
 			format: new ol.format.GeoJSON()
 			}),
 		style: styleFunction
@@ -168,7 +168,7 @@
 	var controlledLayer = new ol.layer.Vector({
 		name: 'lahialueet',
 		source: new ol.source.Vector({
-			url: 'http://zan.kapsi.fi/dronemap/valvottu.geojson',
+			url: 'https://raw.githubusercontent.com/zanppa/dronemap/master/valvottu.geojson',
 			format: new ol.format.GeoJSON()
 			}),
 		style: styleFunction
@@ -177,7 +177,7 @@
 	var restrictedLayer = new ol.layer.Vector({
 		name: 'kieltoalueet',
 		source: new ol.source.Vector({
-			url: 'http://zan.kapsi.fi/dronemap/rajoitukset.geojson',
+			url: 'https://raw.githubusercontent.com/zanppa/dronemap/master/rajoitukset.geojson',
 			format: new ol.format.GeoJSON()
 			}),
 		style: styleFunction
@@ -186,7 +186,7 @@
 	var lennatyspaikatLayer = new ol.layer.Vector({
 		name: 'lennatyspaikat',
 		source: new ol.source.Vector({
-			url: 'http://zan.kapsi.fi/dronemap/lennatyspaikat.geojson',
+			url: 'https://raw.githubusercontent.com/zanppa/dronemap/master/lennatyspaikat.geojson',
 			format: new ol.format.GeoJSON()
 			}),
 		style: styleFunction
