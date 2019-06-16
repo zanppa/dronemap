@@ -1,4 +1,4 @@
-Following is the license of the source data used from AIP SUOMI/FINLAND [GEN 0](https://www.ais.fi/ais/aip/ge/EF_GEN_0_1_EN.pdf)
+Following is the license of the source data used from AIP SUOMI/FINLAND GEN 0 https://www.ais.fi/ais/aip/ge/EF_GEN_0_1_EN.pdf
 
 ANS Finland owns the copyrights to Finnish aeronautical in-formation  publications.  Third  parties  have  the  copyrights  tobackground material used on maps (e.g. roads, waterways,urban areas). The related publishing permissions are shownin AIP, GEN 3.2.
 ANS Finland reserves the right to change the content, servicedescription,  price  and  pricing  method  of  the  services  it  pro-vides.
