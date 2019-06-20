@@ -8,6 +8,17 @@
 		height: 500px;
 		width: 100%;
 	}
+	#info {
+		position: absolute;
+		z-index: 10;
+		background-color: black;
+		border: 1px solid #ccc;
+		color: #fff;
+		padding: 5px;
+		font-size: 14px;
+		top: -10em;
+		pointer-events: none;
+	}
 	</style>
 	<script src="https://openlayers.org/en/v5.0.0/build/ol.js" type="text/javascript"></script>
 	<title>Lennokkien rajoitusaluekartta</title>
@@ -15,12 +26,13 @@
 <body>
 	<h2>Lennokkien rajoitusalueet</h2>
 
-	<div id="map" class="map"></div>
+	<div id="map" class="map"><div id="info"></div></div>
 
 	<h3>Näytettävät alueet</h3>
 	<input type="checkbox" id="lentokentat" value="lentokentat" onclick="toggleVisibility(this)" checked />Lentokenttien kieltoalueet<br />
 	<input type="checkbox" id="lahialueet" value="lahialueet" onclick="toggleVisibility(this)" checked />Lentokenttien lähialueet (CTR, FIZ, RMZ)<br />
 	<input type="checkbox" id="kieltoalueet" value="kieltoalueet" onclick="toggleVisibility(this)" checked />Lentokielto- ja rajoitusalueet (P- ja R-alueet)<br />
+	<input type="checkbox" id="lisaykset" value="lisaykset" onclick="toggleVisibility(this)" checked />Lisäykset (AIP SUP)<br />
 	<input type="checkbox" id="lennatyspaikat" value="lennatyspaikat" onclick="toggleVisibility(this)" />Lennokkien lennätyspaikat<br />
  
 	<h3>Selitykset</h3>
@@ -36,7 +48,8 @@
 	<h3>Huomautukset:</h3>
 	<ul>
 	<li>Tämä kartta on VAIN TIEDOKSI! Kartta ei ole täydellinen tai tarkka! Varmista aina ilma-alueiden rajat oikeasta lähteestä!</li>
-	<li>Perustuu Trafin määräykseen <a href="https://www.trafi.fi/filebank/a/1482415412/c34a1bef37860a2559d61acf4fdebb3a/23514-OPS_M1-32_VALMIS_maarays_RPAS_fi.pdf">OPS M1-32</a></li>
+	<li><strike>Perustuu Trafin määräykseen <a href="https://www.trafi.fi/filebank/a/1482415412/c34a1bef37860a2559d61acf4fdebb3a/23514-OPS_M1-32_VALMIS_maarays_RPAS_fi.pdf">OPS M1-32</a></strike></li>
+	<li>Määräykset päivittyneet 7.12.2018, kiitoratojen läheiset alueet päivitetty (1 km ja 3 km), <a href="http://www.finlex.fi/data/normit/44667/TRAFI_334638_03_04_00_00_2017_Kauko-ohjatun_ilma-aluksen_ja_lennokin_kayttaminen_ilmailuun_FI.pdf">OPS M1-32</a></li>
 	<li>Datan lähteenä on <a href="https://ais.fi/aip/eaip/fi/">AIS AIP</a>, AD 2 Lentopaikat, kunkin lentoaseman tekstisivu, esim <a href="https://ais.fi/ais/eaip/ad/efhk/EF_AD_2_EFHK_EN.pdf">Helsinki-Vantaa</a></li>
 	<li><a href="https://ais.fi/ais/aica/A/A2016/EF_CIRC_2016_A_005_en.pdf">Lennätyspaikat</a> 23.6.2016 alkaen, myös <a href="https://www.droneinfo.fi/fi/lennokkien_lennatyspaikat">Drone infon sivulla</a></li>
 	</ul>
@@ -50,8 +63,10 @@
 	Trafin määräyksen mukaisesti miehittämätöntä lennokkia lennättäessä on otettava huomioon seuraavat rajoitukset:
 	<ul>
 	<li>Lennätyskorkeus on max 150m maan tai veden pinnasta, poislukien lennätyspaikat</li>
-	<li>5 km lähempänä lentokentän kiitotietä ei saa lennättää</li>
-	<li>Kauempana kuin 5 km, mutta CTR (control zone), FIZ (flight information zone) tai RMZ (radio mandatory zone) -alueilla saa lennättää max 50 m korkeudella</li>
+	<li><strike>5 km lähempänä lentokentän kiitotietä ei saa lennättää</strike></li>
+	<li>1 km lähempänä kiitotien reunaa ei saa lennättää</li>
+	<li>1 km ja 3 km välisellä etäisyydellä kiitotiestä saa lennättää vain kiinteiden esteiden lähellä ja alapuolella</li>
+	<li>Kauempana kuin <strike>5 km</strike> 3 km, mutta CTR (control zone), FIZ (flight information zone) tai RMZ (radio mandatory zone) -alueilla saa lennättää max 50 m korkeudella</li>
 	<li>Poikkeuksena edelliseen Jyväskylän EFJY ja Utin EFUT yo. alueilla ei saa lennättää lainkaan</li>
 	</ul>
 	
@@ -64,10 +79,11 @@
 	</ul>
 	Monilla yo. rajoitusalueilla on mahdollista lennättää kunhan asiasta sopii paikallisen lennonjohdon ja/tai puolustusvoimien kanssa.<br />
 	<br />
-	Päivitetty viimeksi 12.8.2018<br />
+	Päivitetty viimeksi 16.6.2019<br />
+	16.6.2019: Muutettu 5 km kiitoradasta olevat alueet 1 km alueeksi ja 1...3 km alueeksi ja korjattu tekstejä.<br />
         12.8.2018: Laskettu lentokenttien kielto-alueet uusiksi 5 km kiitoratojen reunoista. Venäjän rajaa tarkennettu. Lisätty rajoitusalueita.<br />
         3.7.2018: Ensimmäinen versio<br />
-	Copyright &copy; 2018, Lauri Peltonen<br />
+	Copyright &copy; 2018, 2019 Lauri Peltonen<br />
 	
 	<script type="text/javascript">
 	var map = new ol.Map({
@@ -82,20 +98,45 @@
 			zoom: 5
 			})
 		});
-	  
+
 	var styleFunction = function(feature) {
 		var color;
-		if (feature.get("type")=="R"){
+		var pattern;
+		if (feature.get("type")=="R"){	// Restricted/rajoitusalue 0 .. 1 km
 			color = 'rgba(255,0,0,0.5)';
-		} else if (feature.get("type")=="L"){
+			pattern = 0;
+		} else if (feature.get("type")=="R2"){ // Restricted/rajoitusalue 1...3 km
+			color = 'rgba(255,0,255,0.3)';
+			pattern = 0;
+		} else if (feature.get("type")=="L"){ // Controlled airspace/lähialue
 			color = 'rgba(255,255,0,0.3)';
-		} else if (feature.get("type")=="A1"){
+			pattern = 0;
+		} else if (feature.get("type")=="A1"){ // Flying area, type 1/lennätyspaikka 1
 			color = 'rgba(0,0,255,0.9)';
-		} else if (feature.get("type")=="A2"){
+			pattern = 0;
+		} else if (feature.get("type")=="A2"){ // Flying area, type 2/lennätyspaikka 2
 			color = 'rgba(0,178,0,0.9)'; 
+			pattern = 0;
+		} else if (feature.get("type")=="D") { // Danger zone/vaara-alue
+			color = 'rgba(255,175,0,0.5)'; 
+			pattern = 1;
 		} else {
 			color = 'rgba(128,128,128,0.3)'; 
+			pattern = 0;
 		}
+
+		var canvas = document.createElement('canvas');
+		var context = canvas.getContext('2d');
+		var patternStyle = (function() {
+			canvas.width = 8;
+			canvas.height = 8;
+			context.strokeStyle = color;
+			context.beginPath();
+			context.moveTo(0, 0);
+			context.lineTo(canvas.width, canvas.height);
+			context.stroke();
+			return context.createPattern(canvas, 'repeat');
+		}());
 
 		var retStyle = new ol.style.Style({
 			image: new ol.style.Circle({
@@ -109,7 +150,7 @@
 		                        })
 			        }),
 			fill: new ol.style.Fill({
-				color: color
+				color: (pattern == 0 ? color : patternStyle)
 				}),
 			stroke: new ol.style.Stroke({
 				color: color,
@@ -155,11 +196,58 @@
 		}
 	}
 
+	// Hover-over popups
+	// Modified from: https://gis.stackexchange.com/questions/223649/openlayers-3-feature-popup-without-jquery-bootstrap/223650
+	// and https://openlayersbook.github.io/ch08-interacting-with-your-map/example-03.html
+	var info = document.getElementById('info');
+	var target = document.getElementById('map');
+	function displayFeatureInfo(pixel) {
+		info.style.left = pixel[0] + 'px';
+		info.style.top = (pixel[1] - 20) + 'px';
+		var features = [];
+		map.forEachFeatureAtPixel(pixel, function(feature, layer) {
+			features.push(feature);
+			});
+		if (features.length > 0) {
+			var text = "";
+			for(var i = 0; i < features.length; i++) {
+				text = text + features[i].get('name') + ": ";
+				text = text + features[i].get('type') + "<br />";
+				t1 = features[i].get('timeBegin');
+				if (t1)
+					text = text + "Alkaa: " + t1 + "<br />";
+				t1 = features[i].get('timeEnd');
+				if (t1)
+					text = text + "Päättyy: " + t1 + "<br />";
+
+				text = text + "<br />";
+			}
+			info.style.display = 'none';
+			info.innerHTML = text;
+			info.style.display = 'block';
+			target.style.cursor = "pointer";
+		} else {
+			info.style.display = 'none';
+			target.style.cursor = "";
+		}
+	}
+
+
+	map.on('pointermove', function(evt) {
+		if (evt.dragging) {
+			info.style.display = 'none';
+			return;
+		}
+		var pixel = map.getEventPixel(evt.originalEvent);
+		displayFeatureInfo(pixel);
+	});
+
+
 	// Load layers	  
 	var airfieldLayer = new ol.layer.Vector({
 		name: 'lentokentat',
 		source: new ol.source.Vector({
-			url: 'https://raw.githubusercontent.com/zanppa/dronemap/master/lentokentat.geojson',
+			url: 'https://raw.githubusercontent.com/zanppa/dronemap/master/data/lentokentat.geojson',
 			format: new ol.format.GeoJSON()
 			}),
 		style: styleFunction
@@ -168,7 +256,7 @@
 	var controlledLayer = new ol.layer.Vector({
 		name: 'lahialueet',
 		source: new ol.source.Vector({
-			url: 'https://raw.githubusercontent.com/zanppa/dronemap/master/valvottu.geojson',
+			url: 'https://raw.githubusercontent.com/zanppa/dronemap/master/data/valvottu.geojson',
 			format: new ol.format.GeoJSON()
 			}),
 		style: styleFunction
@@ -177,7 +265,7 @@
 	var restrictedLayer = new ol.layer.Vector({
 		name: 'kieltoalueet',
 		source: new ol.source.Vector({
-			url: 'https://raw.githubusercontent.com/zanppa/dronemap/master/rajoitukset.geojson',
+			url: 'https://raw.githubusercontent.com/zanppa/dronemap/master/data/rajoitukset.geojson',
 			format: new ol.format.GeoJSON()
 			}),
 		style: styleFunction
@@ -186,18 +274,28 @@
 	var lennatyspaikatLayer = new ol.layer.Vector({
 		name: 'lennatyspaikat',
 		source: new ol.source.Vector({
-			url: 'https://raw.githubusercontent.com/zanppa/dronemap/master/lennatyspaikat.geojson',
+			url: 'https://raw.githubusercontent.com/zanppa/dronemap/master/data/lennatyspaikat.geojson',
 			format: new ol.format.GeoJSON()
 			}),
 		style: styleFunction
 		});
 	lennatyspaikatLayer.setVisible(false);
 
+	var supLayer = new ol.layer.Vector({
+		name: 'lisaykset',
+		source: new ol.source.Vector({
+			url: 'https://raw.githubusercontent.com/zanppa/dronemap/master/data/sup.geojson',
+			format: new ol.format.GeoJSON()
+			}),
+		style: styleFunction
+		});
+
 
 	// Add Vector layer to map
 	map.addLayer(airfieldLayer);
 	map.addLayer(controlledLayer);
 	map.addLayer(restrictedLayer);
+	map.addLayer(supLayer);
 	map.addLayer(lennatyspaikatLayer);
 
 	</script>
