@@ -11,17 +11,17 @@ DroneInfo mobile app can be used to display the restriction zones, however [the 
 
 I ended up typing most of the restriction zones by hand from pdf file to geojson format. I did not find any (free/open) data source that could be used for this. I also wrote a python script to generate restriction zones which are measured from runway edges, for this I created a json file with all runways by hand.
 
-## Files
-Following files are included in the repository:
+## Directories and files
+Following directories and files are included in the repository:
 
-* index.html: example file which loads the restriction zones and displays them over Openstreetmap
-* lentokentat.geojson: Prohibited zones near airports (runways)
-* valvottu.geojson: Controlled airspace areas (near airports), drone restrictions apply
-* rajoitukset.geojson: Other restriction zones (military zones etc), typically no-fly zones
-* lennatyspaikat.geojson: Special drone flying areas
-* lentokentat.json: Airport and runway data for generation of the prohibited zones
-* circle2.py: Generates the prohibited zones near runways using lentokentat.json as the source
+* data: geojson files for the restriction zones that can be directly loaded using e.g. Openlayers
+* tools: Helper tools to create the data files
+* index.html: example file which loads the restriction zones and displays them over Openstreetmap using Openlayers
 
+Readme in each directory give more detailed descriptions of the files.
+
+## Example
+A working example can be found [here](http://zan.kapsi.fi/dronemap).
 
 ## Notes
 * This data is **OUTDATED** because the rules have changed 7.12.2018. [The new regulation is here](https://www.finlex.fi/data/normit/44667/TRAFI_334638_03040000_2017_Use_of_remotely_piloted_aircraft__1_.pdf)
