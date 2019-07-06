@@ -1,5 +1,8 @@
 # dronemap
-A database and simple interface to show Finland's drone restriction zones on a map
+A database and simple interface to show Finland's drone restriction zones on a map.
+
+The purpose of this repository is to provide a free and open source method for displaying drone restriction zones of Finland.
+
 
 ## Introduction
 This repository contains geojson files for drone restriction zones of Finland.
