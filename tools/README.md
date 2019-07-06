@@ -1,8 +1,8 @@
 # Introduction
 This directory contains tools that help in generating the drone restriction maps.
 
-* [airports.py](#airports.py) - Used to generate restriction zones around airport runways
-* [ais-sup.pu](#ais-sup.py) - Used to periodically fetch and parse AIS supplements for temporary restriction zones
+* [airports.py](#airportspy) - Used to generate restriction zones around airport runways
+* [ais-sup.pu](#ais-suppy) - Used to periodically fetch and parse AIS supplements for temporary restriction zones
 
 ## airports.py
 This tool creates a geojson polygon list of restriction zones around airport runways.
