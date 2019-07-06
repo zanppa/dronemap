@@ -47,3 +47,21 @@ with following options possible
  ```
 By default the tool outputs all restriction zones regardless of whether they are currently active, passed or in the future. The 
 AIS wepage is fetched every 12 hours and the geojson is updated every 1 hour.
+
+## lentokentat.json
+lentokentat.json is the source data used to generate restriction zones around airports, see [airports.py](#airportspy). The file is a dictionary containing one key `airports` which is an array of airports. All the airports have following structure:
+```
+{
+  "id":"EFPO",
+  "name":"Pori",
+  "date":"24.5.2018",
+  "updated":"12.8.2018",
+  "center":[21.7977777778,61.4613888889],
+  "runways":{
+    "12/30":{"width":60,"length":2351,"end1":[21.7813444444,61.4681138889],"end2":[21.8171194444,61.455775]},
+    "17/35":{"width":30,"length":801,"end1":[21.7984777778,61.4639777778],"end2":[21.8000777778,61.4568305556]}}
+}
+```
+where `id`is the identification of the airport, `name` is the human readable name, `date` is the date the information was last checked (from the source data at AIS), `updated` is the date when the pdf file in the AIS webpage was updated, `center` contains array of longitude, latitude in WGS84, and `runways`is a dictionary of all the runways of the airport.
+
+The `runways` dictionary has the runway name as the key (e.g. `12/30` which is the heading of the runway, 120 degrees or 300 degrees depending on the direction). For each runway following variables are given: `width` is the runway width in meters, `length` is the runway length in meters, `end1` is longitude, latitude of one end of the runway and `end2`is the longitude, latitude of the other end.
