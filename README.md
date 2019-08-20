@@ -7,7 +7,7 @@ The purpose of this repository is to provide a free and open source method for d
 ## Introduction
 This repository contains geojson files for drone restriction zones of Finland.
 The files are hand-crafted from freely available data from [AIP Suomi/Finland](https://www.ais.fi/ais/aip/fi/index.htm)
-Note that the restriction zones are not complete and are already outdated.
+Note that the restriction zones are not complete and may be already outdated.
 
 ## Background
 DroneInfo mobile app can be used to display the restriction zones, however [the website](https://www.droneinfo.fi/) only shows some restriction zones. Also I found the mobile app too crowded because it also shows some unnecessary layers. So I did my own version.
@@ -27,7 +27,8 @@ Readme in each directory give more detailed descriptions of the files.
 A working example can be found [here](http://zan.kapsi.fi/dronemap).
 
 ## Notes
-* This data is **OUTDATED** because the rules have changed 7.12.2018. [The new regulation is here](https://www.finlex.fi/data/normit/44667/TRAFI_334638_03040000_2017_Use_of_remotely_piloted_aircraft__1_.pdf)
+* ~~This data is **OUTDATED** because the rules have changed 7.12.2018. [The new regulation is here](https://www.finlex.fi/data/normit/44667/TRAFI_334638_03040000_2017_Use_of_remotely_piloted_aircraft__1_.pdf)~~
+* The `tools/airports.py` has been updated and the `data/lentokentat.geojson` has been re-created according to the new area limits.
 * At the moment it seems that github does not render html (even with the ```raw``` view) and does not allow remote ajax data fetching (e.g. from github.io).
 * DroneInfo app seems to be updated to have much clearer map and also show some more restriction areas that are not included in this version.
 
