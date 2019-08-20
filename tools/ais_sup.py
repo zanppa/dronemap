@@ -9,7 +9,7 @@ Created on Mon Jun 17 12:07:54 2019
 Copyright (C) 2019 Lauri Peltonen
 """
 
-import urllib # Load the list of supplement links and the pdf files
+import urllib.request # Load the list of supplement links and the pdf files
 import lxml.html # Parse the supplement page for links
 import io # Convert received pdf file (string) to byte stream
 import PyPDF2 # Extract the attached xml file from the pdf
@@ -44,7 +44,7 @@ def get_sup_links():
     try:
         connection = urllib.request.urlopen('https://www.ais.fi/ais/aipsup/AipSup.htm')
     except Exception as e:
-        print('Error loading AIS SUP page: ', e.reason)
+        print('Error loading AIS SUP page: ', str(e))
         return []
     
     # Parse all links
@@ -71,7 +71,7 @@ def get_pdf_file(link):
         pdf_file = connection.read()
     except Exception as e:
         print('Could not read pdf file:', link)
-        print(e.reason)
+        print(str(e))
         return None
     finally:
         connection.close()
@@ -357,5 +357,5 @@ try:
 
 
 except KeyboardInterrupt as e:
-    print("Quit, reason:", e.reason)
+    print("Quit, reason:", str(e))
     
