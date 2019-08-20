@@ -19,4 +19,4 @@ data_rewinded = geojson_rewind.rewind(data_json)
 
 # Print
 # TODO: Pretty-print...
-print(json.dumps(data_rewinded))
+print(json.dumps(data_rewinded,sort_keys=True, indent=2))
