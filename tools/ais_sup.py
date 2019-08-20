@@ -298,7 +298,10 @@ def create_json_from_features():
         print('Writing to file:', out_filename)
         
     with open(out_filename, 'w') as file:
-        file.write(json.dumps(geojson))
+        file.write(json.dumps(geojson, sort_keys=True, indent=2))
+
+    if verbose:
+        print('Printing done')
         
     #print(json.dumps(geojson))
 
